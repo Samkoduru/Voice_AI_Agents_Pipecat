@@ -1,6 +1,5 @@
 # MedFlow: AI-Powered Patient Intake Assistant
 
-
 A sophisticated AI-powered virtual assistant designed to revolutionize the medical intake process. MedFlow streamlines patient information collection through natural voice conversations, reducing administrative burden and improving the patient experience before doctor visits.
 
 💡 Looking to build structured conversations? Check out [Pipecat Flows](https://github.com/pipecat-ai/pipecat-flows) for managing complex conversational states and transitions.
@@ -18,6 +17,7 @@ A sophisticated AI-powered virtual assistant designed to revolutionize the medic
 - [Cartesia Best Practices](#cartesia-best-practices)
 - [Use Cases](#use-cases)
 - [Security & Privacy](#security--privacy)
+- [Project Structure](#project-structure)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -26,7 +26,7 @@ A sophisticated AI-powered virtual assistant designed to revolutionize the medic
 For a guided setup experience, run the setup script:
 
 ```sh
-python setup.py
+python src/config/medflow_setup.py
 ```
 
 This will:
@@ -107,7 +107,7 @@ This will:
 ### Development Mode
 
 ```bash
-python server.py
+python medflow.py
 ```
 
 Then visit `http://localhost:7860/` in your browser to start a patient intake session.
@@ -167,6 +167,30 @@ Your goal is to collect patient information efficiently while maintaining a warm
 - No data is stored permanently in the demo version
 - HIPAA-compliant data handling practices
 - Secure API key management
+
+## Project Structure
+
+```
+MedFlow/
+├── src/
+│   ├── api/
+│   │   └── medflow_server.py      # FastAPI server application
+│   ├── core/
+│   │   └── patient_intake.py      # Core patient intake logic
+│   ├── config/
+│   │   ├── medflow_setup.py       # Setup and configuration script
+│   │   └── daily_config.py        # Daily.co configuration
+│   └── utils/
+│       └── assets/                # Audio feedback files
+├── tests/                         # Test files (future)
+├── docs/                          # Documentation (future)
+├── medflow.py                     # Main entry point
+├── requirements.txt               # Python dependencies
+├── Dockerfile                     # Docker configuration
+├── env.example                    # Environment variables template
+├── .gitignore                     # Git ignore rules
+└── README.md                      # This file
+```
 
 ## Contributing
 

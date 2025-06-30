@@ -1,5 +1,5 @@
 """
-MedFlow: AI-Powered Patient Intake Assistant - Server
+MedFlow - AI-Powered Patient Intake Assistant - Server
 FastAPI server for managing patient intake sessions and Daily.co room creation.
 
 Author: Sam K
@@ -9,7 +9,11 @@ License: BSD 2-Clause License
 import argparse
 import os
 import subprocess
+import sys
 from contextlib import asynccontextmanager
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 import aiohttp
 from dotenv import load_dotenv
@@ -115,7 +119,7 @@ async def start_agent(request: Request):
     # Spawn the MedFlow intake assistant process
     try:
         proc = subprocess.Popen(
-            [f"python3 -m bot -u {room.url} -t {token}"],
+            [f"python3 -m core.patient_intake -u {room.url} -t {token}"],
             shell=True,
             bufsize=1,
             cwd=os.path.dirname(os.path.abspath(__file__)),
@@ -152,7 +156,8 @@ def get_status(pid: int):
     return JSONResponse({"bot_id": pid, "status": status})
 
 
-if __name__ == "__main__":
+def main():
+    """Main function to start the MedFlow server."""
     import uvicorn
 
     # Get configuration from environment
@@ -171,8 +176,12 @@ if __name__ == "__main__":
     
     # Start the server
     uvicorn.run(
-        "server:app",
+        "api.medflow_server:app",
         host=config.host,
         port=config.port,
         reload=config.reload,
     )
+
+
+if __name__ == "__main__":
+    main()

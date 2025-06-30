@@ -1,6 +1,6 @@
 """
-MedFlow: AI-Powered Patient Intake Assistant
-Core bot logic for managing patient intake conversations and data collection.
+MedFlow - AI-Powered Patient Intake Assistant
+Core logic for managing patient intake conversations and data collection.
 
 Author: Sam K
 License: BSD 2-Clause License
@@ -11,10 +11,13 @@ import os
 import sys
 import wave
 
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
 import aiohttp
 from dotenv import load_dotenv
 from loguru import logger
-from runner import configure
+from config.daily_config import configure
 
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.frames.frames import OutputAudioRawFrame
@@ -49,7 +52,7 @@ sound_files = [
 # Load audio files for user feedback
 script_dir = os.path.dirname(__file__)
 for file in sound_files:
-    full_path = os.path.join(script_dir, "assets", file)
+    full_path = os.path.join(script_dir, "..", "utils", "assets", file)
     filename = os.path.splitext(os.path.basename(full_path))[0]
     with wave.open(full_path) as audio_file:
         sounds[file] = OutputAudioRawFrame(

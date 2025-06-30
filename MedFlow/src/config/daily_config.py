@@ -1,5 +1,5 @@
 """
-MedFlow: AI-Powered Patient Intake Assistant - Runner Configuration
+MedFlow - AI-Powered Patient Intake Assistant - Daily Configuration
 Handles Daily.co room configuration and token generation for patient intake sessions.
 
 Author: Sam K
