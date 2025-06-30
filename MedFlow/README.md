@@ -1,6 +1,5 @@
 # MedFlow: AI-Powered Patient Intake Assistant
 
-<img src="image.png" width="420px">
 
 A sophisticated AI-powered virtual assistant designed to revolutionize the medical intake process. MedFlow streamlines patient information collection through natural voice conversations, reducing administrative burden and improving the patient experience before doctor visits.
 

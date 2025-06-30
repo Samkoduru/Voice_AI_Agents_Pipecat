@@ -76,20 +76,3 @@ Each project has its own configuration and setup script:
 - **VoiceFlow:** Uses Twilio for phone integration and real-time AI conversations
 
 See the individual project READMEs for detailed setup and deployment instructions.
-
-## 📚 Documentation
-
-- [MedFlow Documentation](./patient-intake/README.md)
-- [VoiceFlow Documentation](./twilio-chatbot/README.md)
-
-## 🤝 Contributing
-
-These projects are built on the excellent [Pipecat](https://github.com/pipecat-ai/pipecat) framework. Each project is fully independent, professionally documented, and ready for real-world use or further development.
-
-## 📄 License
-
-This project is licensed under the BSD 2-Clause License. See individual subproject LICENSE files for details.
-
----
-
-**Built with ❤️ using [Pipecat](https://github.com/pipecat-ai/pipecat)** 
