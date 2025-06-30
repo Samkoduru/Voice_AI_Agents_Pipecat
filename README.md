@@ -44,20 +44,22 @@ Each project is independent and can be run separately. For a guided setup, use t
 
 ### MedFlow (Patient Intake)
 ```bash
-cd patient-intake
+cd MedFlow
 python3 -m venv venv
 source venv/bin/activate
-python setup.py
+python src/config/medflow_setup.py
 # Follow the instructions to configure your .env and run the server
+python medflow.py
 ```
 
-### VoiceFlow (Twilio Voice Assistant)
+### VoiceFlow (Voice Assistant)
 ```bash
-cd twilio-chatbot
+cd VoiceFlow
 python3 -m venv venv
 source venv/bin/activate
-python setup.py
+python src/config/voiceflow_setup.py
 # Follow the instructions to configure your .env and run the server
+python voiceflow.py
 ```
 
 ## 📋 Prerequisites
