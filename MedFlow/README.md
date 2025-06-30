@@ -2,7 +2,6 @@
 
 A sophisticated AI-powered virtual assistant designed to revolutionize the medical intake process. MedFlow streamlines patient information collection through natural voice conversations, reducing administrative burden and improving the patient experience before doctor visits.
 
-💡 Looking to build structured conversations? Check out [Pipecat Flows](https://github.com/pipecat-ai/pipecat-flows) for managing complex conversational states and transitions.
 
 ## Table of Contents
 
@@ -154,20 +153,6 @@ Your goal is to collect patient information efficiently while maintaining a warm
 ]
 ```
 
-## Use Cases
-
-- **Medical Clinics**: Streamline patient intake processes
-- **Telemedicine**: Pre-visit information collection
-- **Healthcare Systems**: Standardize intake procedures
-- **Medical Research**: Automated data collection for studies
-
-## Security & Privacy
-
-- All patient data is processed securely
-- No data is stored permanently in the demo version
-- HIPAA-compliant data handling practices
-- Secure API key management
-
 ## Project Structure
 
 ```
@@ -191,15 +176,3 @@ MedFlow/
 ├── .gitignore                     # Git ignore rules
 └── README.md                      # This file
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the BSD 2-Clause License - see the LICENSE file for details.
