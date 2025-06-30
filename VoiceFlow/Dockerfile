@@ -1,4 +1,4 @@
-# Twilio AI Chatbot Docker Configuration
+# VoiceFlow AI Assistant Docker Configuration
 # Multi-stage build for optimized production deployment
 
 # Use Python 3.10 Bullseye as base image
@@ -23,5 +23,5 @@ EXPOSE 8765
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
 
-# Run the FastAPI application
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8765"]
+# Run the VoiceFlow application
+CMD ["python", "voiceflow.py"]

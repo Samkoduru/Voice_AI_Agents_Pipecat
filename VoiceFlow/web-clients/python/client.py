@@ -1,6 +1,6 @@
 """
-Twilio AI Chatbot - Python Test Client
-Automated testing client for the Twilio AI Chatbot server.
+VoiceFlow - Python Test Client
+Automated testing client for the VoiceFlow AI Assistant server.
 
 Author: Sam K
 License: BSD 2-Clause License
@@ -199,7 +199,7 @@ async def run_client(client_name: str, server_url: str, duration_secs: int):
 
 async def main():
     """Main function to run multiple test clients."""
-    parser = argparse.ArgumentParser(description="Twilio AI Chatbot Test Client")
+    parser = argparse.ArgumentParser(description="VoiceFlow AI Assistant Test Client")
     parser.add_argument("-u", "--url", type=str, required=True, help="Server URL")
     parser.add_argument(
         "-c", "--clients", type=int, required=True, help="Number of concurrent clients"
@@ -217,7 +217,7 @@ async def main():
     client_tasks = []
     for i in range(args.clients):
         task = asyncio.create_task(
-            run_client(f"client_{i}", args.url, args.duration)
+            run_client(f"voiceflow_client_{i}", args.url, args.duration)
         )
         client_tasks.append(task)
     
@@ -225,4 +225,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main()) 

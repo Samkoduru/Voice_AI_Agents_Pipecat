@@ -1,4 +1,4 @@
-# VoiceFlow: AI-Powered Twilio Voice Assistant
+# VoiceFlow: AI-Powered Voice Assistant
 
 A sophisticated real-time voice conversation system that transforms Twilio phone calls into intelligent AI interactions. Built with FastAPI and Pipecat, this project creates a seamless audio pipeline that enables natural voice conversations with AI assistants through any phone call.
 
@@ -12,19 +12,20 @@ A sophisticated real-time voice conversation system that transforms Twilio phone
 - [Running the Application](#running-the-application)
 - [Testing](#testing)
 - [Deployment](#deployment)
+- [Project Structure](#project-structure)
 
 ## Quick Start
 
 For a guided setup experience, run the setup script:
 
 ```sh
-python setup.py
+python src/config/voiceflow_setup.py
 ```
 
 This will:
 - Check Python version compatibility
 - Create `.env` file from template
-- Create `templates/streams.xml` from template
+- Create `src/config/templates/streams.xml` from template
 - Provide next steps for configuration
 
 ## Features
@@ -57,7 +58,7 @@ Before you begin, ensure you have the following:
 1. **Clone the repository**:
    ```sh
    git clone <your-repo-url>
-   cd voiceflow-twilio
+   cd VoiceFlow
    ```
 
 2. **Set up a virtual environment** (recommended):
@@ -112,10 +113,10 @@ Before you begin, ensure you have the following:
 
 4. **Configure the WebSocket URL**:
    ```sh
-   cp templates/streams.xml.template templates/streams.xml
+   cp src/config/templates/streams.xml.template src/config/templates/streams.xml
    ```
    
-   Edit `templates/streams.xml` and replace `<your server url>` with your ngrok domain:
+   Edit `src/config/templates/streams.xml` and replace `<your server url>` with your ngrok domain:
    ```xml
    <Stream url="wss://abc123.ngrok.io/ws"></Stream>
    ```
@@ -125,17 +126,17 @@ Before you begin, ensure you have the following:
 ### Option 1: Python (Development)
 
 ```sh
-python server.py
+python voiceflow.py
 ```
 
 ### Option 2: Docker (Production)
 
 ```sh
 # Build the image
-docker build -t voiceflow-twilio .
+docker build -t voiceflow-ai .
 
 # Run the container
-docker run -it --rm -p 8765:8765 --env-file .env voiceflow-twilio
+docker run -it --rm -p 8765:8765 --env-file .env voiceflow-ai
 ```
 
 The server will start on port 8765. Keep it running while testing.
@@ -146,13 +147,13 @@ You can test the voice assistant without making actual phone calls using the inc
 
 ### Python Client (Automated Testing)
 ```sh
-cd client/python
+cd web-clients/python
 python client.py -u http://localhost:8765 -c 2
 ```
 
 ### TypeScript Client (Manual Testing)
 ```sh
-cd client/typescript
+cd web-clients/typescript
 npm install
 npm run dev
 ```
@@ -179,13 +180,45 @@ Then visit `http://localhost:5173` in your browser.
 - Configure environment variables securely
 - Use Docker for consistent deployment
 
+## Project Structure
+
+```
+VoiceFlow/
+├── src/
+│   ├── api/
+│   │   └── voiceflow_server.py    # FastAPI server application
+│   │   └── voice_assistant.py     # Core AI conversation logic
+│   ├── config/
+│   │   ├── voiceflow_setup.py     # Setup and configuration script
+│   │   └── templates/
+│   │       ├── streams.xml        # TwiML configuration
+│   │       └── streams.xml.template
+│   └── utils/                     # Utility functions (future)
+├── web-clients/
+│   ├── python/                    # Python test client
+│   │   ├── client.py
+│   │   └── README.md
+│   └── typescript/                # TypeScript web client
+│       ├── src/
+│       ├── package.json
+│       └── README.md
+├── tests/                         # Test files (future)
+├── docs/                          # Documentation (future)
+├── voiceflow.py                   # Main entry point
+├── requirements.txt               # Python dependencies
+├── Dockerfile                     # Docker configuration
+├── env.example                    # Environment variables template
+├── .gitignore                     # Git ignore rules
+└── README.md                      # This file
+```
+
 ## Troubleshooting
 
 ### Common Issues
 
 1. **WebSocket Connection Failed**:
    - Check that ngrok is running
-   - Verify the URL in `templates/streams.xml`
+   - Verify the URL in `src/config/templates/streams.xml`
    - Ensure the server is running on port 8765
 
 2. **Audio Not Working**:
@@ -197,18 +230,3 @@ Then visit `http://localhost:5173` in your browser.
    - Verify the webhook URL in Twilio console
    - Check that the server is accessible from the internet
    - Ensure the webhook method is set to POST
-
-### Logs
-The application uses loguru for logging. Check the console output for detailed error messages and debugging information.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the BSD 2-Clause License - see the LICENSE file for details.

@@ -1,6 +1,6 @@
-# Python Client for Server Testing
+# VoiceFlow Python Test Client
 
-This Python client enables automated testing of the Twilio chatbot server via WebSocket without the need to make actual phone calls. It simulates multiple concurrent users interacting with the AI chatbot.
+This Python client enables automated testing of the VoiceFlow AI Assistant server via WebSocket without the need to make actual phone calls. It simulates multiple concurrent users interacting with the AI assistant.
 
 ## Features
 
@@ -14,13 +14,13 @@ This Python client enables automated testing of the Twilio chatbot server via We
 
 - Python 3.10+
 - All API keys configured in `.env` file (see main README)
-- Server running on localhost:8765
+- VoiceFlow server running on localhost:8765
 
 ## Setup Instructions
 
 ### 1. Configure the Stream Template
 
-Edit the `templates/streams.xml` file to point to your server's WebSocket endpoint:
+Edit the `src/config/templates/streams.xml` file to point to your server's WebSocket endpoint:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -32,13 +32,13 @@ Edit the `templates/streams.xml` file to point to your server's WebSocket endpoi
 </Response>
 ```
 
-### 2. Start the Server in Test Mode
+### 2. Start the VoiceFlow Server in Test Mode
 
 Run the server with the `-t` flag to indicate test mode:
 
 ```sh
 # Ensure you're in the project directory and your virtual environment is activated
-python server.py -t
+python voiceflow.py -t
 ```
 
 ### 3. Run the Client
@@ -73,13 +73,13 @@ python client.py -u https://your-server.com -c 3 -d 45
 The client will:
 - Connect to the server and establish WebSocket connections
 - Simulate user conversations with the AI
-- Save audio recordings as WAV files (format: `client_X_recording_YYYYMMDD_HHMMSS.wav`)
+- Save audio recordings as WAV files (format: `voiceflow_client_X_recording_YYYYMMDD_HHMMSS.wav`)
 - Display real-time logs of the conversation
 - Automatically disconnect after the specified duration
 
 ## Troubleshooting
 
-1. **Connection Failed**: Ensure the server is running and accessible
+1. **Connection Failed**: Ensure the VoiceFlow server is running and accessible
 2. **Audio Issues**: Check that all API keys are properly configured
 3. **Permission Errors**: Ensure write permissions in the current directory for audio files
 
@@ -88,4 +88,4 @@ The client will:
 - The client uses the same AI services as the server (OpenAI, Deepgram, Cartesia)
 - Audio files are saved in the current working directory
 - Each client simulates a different persona (8-year-old child asking questions)
-- The server should be running in test mode (`-t` flag) for optimal testing
+- The server should be running in test mode (`-t` flag) for optimal testing 

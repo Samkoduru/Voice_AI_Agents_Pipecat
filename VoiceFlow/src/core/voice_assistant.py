@@ -1,5 +1,5 @@
 """
-Twilio AI Chatbot - Core Bot Logic
+VoiceFlow - Core Voice Assistant Logic
 Handles real-time voice conversations with AI-powered responses.
 
 Author: Sam K
@@ -59,8 +59,8 @@ async def save_audio(server_name: str, audio: bytes, sample_rate: int, num_chann
         logger.info("No audio data to save")
 
 
-async def run_bot(websocket_client: WebSocket, stream_sid: str, call_sid: str, testing: bool):
-    """Main bot function that handles the AI conversation pipeline."""
+async def run_voice_assistant(websocket_client: WebSocket, stream_sid: str, call_sid: str, testing: bool):
+    """Main voice assistant function that handles the AI conversation pipeline."""
     
     # Initialize Twilio serializer
     serializer = TwilioFrameSerializer(
@@ -149,7 +149,7 @@ async def run_bot(websocket_client: WebSocket, stream_sid: str, call_sid: str, t
     @audiobuffer.event_handler("on_audio_data")
     async def on_audio_data(buffer, audio, sample_rate, num_channels):
         """Handle audio data for recording."""
-        server_name = f"server_{websocket_client.client.port}"
+        server_name = f"voiceflow_server_{websocket_client.client.port}"
         await save_audio(server_name, audio, sample_rate, num_channels)
 
     # Initialize and run the pipeline

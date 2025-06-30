@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Setup script for Twilio AI Chatbot
-This script helps users quickly configure the project with their API keys and settings.
+VoiceFlow Setup Script
+This script helps users quickly configure the VoiceFlow project with their API keys and settings.
 """
 
 import os
@@ -13,7 +13,7 @@ from pathlib import Path
 def print_banner():
     """Print a welcome banner"""
     print("=" * 60)
-    print("🚀 Twilio AI Chatbot Setup")
+    print("🚀 VoiceFlow AI Assistant Setup")
     print("=" * 60)
     print()
 
@@ -49,11 +49,11 @@ def create_env_file():
 
 def create_streams_xml():
     """Create streams.xml from template"""
-    template_file = Path("templates/streams.xml.template")
-    streams_file = Path("templates/streams.xml")
+    template_file = Path("src/config/templates/streams.xml.template")
+    streams_file = Path("src/config/templates/streams.xml")
     
     if streams_file.exists():
-        print("⚠️  templates/streams.xml already exists")
+        print("⚠️  src/config/templates/streams.xml already exists")
         response = input("   Do you want to overwrite it? (y/N): ").lower()
         if response != 'y':
             print("   Skipping streams.xml creation")
@@ -61,10 +61,10 @@ def create_streams_xml():
     
     if template_file.exists():
         shutil.copy(template_file, streams_file)
-        print("✅ Created templates/streams.xml from template")
+        print("✅ Created src/config/templates/streams.xml from template")
         print("   Please update the WebSocket URL with your ngrok domain")
     else:
-        print("❌ Error: templates/streams.xml.template not found")
+        print("❌ Error: src/config/templates/streams.xml.template not found")
 
 
 def check_dependencies():
@@ -87,7 +87,7 @@ def check_dependencies():
 def print_next_steps():
     """Print next steps for the user"""
     print("\n" + "=" * 60)
-    print("🎉 Setup Complete!")
+    print("🎉 VoiceFlow Setup Complete!")
     print("=" * 60)
     print("\n📝 Next Steps:")
     print("1. Edit .env file with your API keys:")
@@ -100,14 +100,14 @@ def print_next_steps():
     print("   pip install -r requirements.txt")
     print("\n3. Set up ngrok tunnel:")
     print("   ngrok http 8765")
-    print("\n4. Update templates/streams.xml with your ngrok URL")
+    print("\n4. Update src/config/templates/streams.xml with your ngrok URL")
     print("\n5. Configure Twilio webhook URL")
-    print("\n6. Run the server:")
-    print("   python server.py")
+    print("\n6. Run the VoiceFlow server:")
+    print("   python voiceflow.py")
     print("\n📚 For detailed instructions, see README.md")
     print("\n🧪 For testing without phone calls:")
-    print("   - Python client: cd client/python && python client.py -u http://localhost:8765")
-    print("   - TypeScript client: cd client/typescript && npm install && npm run dev")
+    print("   - Python client: cd web-clients/python && python client.py -u http://localhost:8765")
+    print("   - TypeScript client: cd web-clients/typescript && npm install && npm run dev")
 
 
 def main():
